@@ -17,7 +17,18 @@ use App\Http\Middleware\TokenValidation;
 */
 
 Route::get('/', function () {
-    return view('Admin/index');
+
+if (session()->has('user_id')) {
+	if (session()->get('user_id')==1) {
+		return view('Admin/index');
+	}else{
+		return view('users.index');
+	}
+}else{
+	return view('login');
+}
+	
+    
 });
 Route::get('/admin', [AdminController::class, 'dashboard']); 
 Route::get('admin/add pwd', [AdminController::class, 'add_pwd_member']);
@@ -26,11 +37,16 @@ Route::get('/barangay', [AdminController::class, 'brgy']);
 Route::get('/list-of-members', [AdminController::class, 'member_list']);
 Route::get('admin/solo-parent', [AdminController::class, 'solo_parent']);
 Route::get('/login', function(){
-	if(!session()->get('user_id')){
-        return view('login');
+	if(session()->has('user_id')){
+       	if (session()->get('user_id')!=1) {
+       		return view("users.index");
+       	}else{
+       		return view("Admin.index");
+       	}
     }else{
-        return redirect('/');
+        return view('login');
     }
+    
 });
 Route::get('admim/announcement',function(){
 	return view('Admin.announcement');

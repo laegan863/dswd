@@ -20,22 +20,31 @@ class UsersController extends Controller
 {
     protected function user_index(){
 
-    	if(session()->get('user_id')!=1){
+	    if(session()->has('user_id')){
 
-			$model = new AdminModel;
+	    	if(session()->get('user_id')!=1){
 
-			$result = $model::dashboard();
+				$model = new AdminModel;
 
-			Session::put('sidebar', $result);
-			$minutes = 525600;
-			config(['session.lifetime' => $minutes]);
-			config(['session.cookie_lifetime' => $minutes]);
+				$result = $model::dashboard();
 
-			return view('users/index');
-			
+				Session::put('sidebar', $result);
+				$minutes = 525600;
+				config(['session.lifetime' => $minutes]);
+				config(['session.cookie_lifetime' => $minutes]);
+
+				return view('users/index');
+				
+			}else{
+				return view('Admin.index');
+			}
+
 		}else{
+
 			return view('login');
+
 		}
+
     }
 
     protected function pwd_application(Request $request){

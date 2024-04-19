@@ -68,6 +68,7 @@ class redirection extends Controller
                 }else{
                     return redirect()->to('user');
                 }
+
                 
             }else{
                 return back()->withInput()->withErrors(['password' => 'Invalid credentials']);

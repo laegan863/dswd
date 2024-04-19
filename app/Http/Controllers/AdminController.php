@@ -30,13 +30,11 @@ class AdminController extends Controller
 			$minutes = 525600;
 			config(['session.lifetime' => $minutes]);
 			config(['session.cookie_lifetime' => $minutes]);
-
 			return view('Admin/index');
 			
 		}else{
 			return view('login');
-		}
-    	
+		}	
 
     }
  
