@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pwds', function (Blueprint $table) {
             $table->id();
-            $table->timestamps()->now();
+            $table->timestamps();
             $table->string('member_account_id')->nullable();
             $table->string('application')->nullable();
             $table->date('date_applied')->nullable();

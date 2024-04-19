@@ -1,13 +1,13 @@
 <!DOCTYPE html>
     <html lang="en">
-    @include('Admin/files/head')
+    @include('users/files/head')
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
 
         <!-- header-nav top navigation -->
-          @include('Admin/files/sidebar')
+          @include('users/files/sidebar')
 
         <div class="top_nav">
             <div class="nav_menu">
@@ -39,9 +39,7 @@
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    @if(session()->has('brgy_name'))
-                      <h2 class="fw-bold">Barangay Name: {{session()->get('brgy_name')}}</h2>
-                    @endif
+                      <h2 class="fw-bold">Barangay Name: {{$brgy_name}}</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -64,24 +62,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @foreach($data as $key)
+                                @php
+                                  $count = 1;
+                                @endphp
+                                @foreach($data_member as $key)
                                     <tr>
-                                      <td>{{$key->id}}</td>
+                                      <td>{{$count}}</td>
                                       <td>{{$key->first_name}}</td>
                                       <td>{{$key->last_name}}</td>
                                       <td>{{$key->middle_name}}</td>
                                       <td class="text-center">
-                                        <a class="btn btn-primary btn-sm" title="Member Info" href="">
+                                        <a class="btn btn-primary btn-sm" title="Member Info" href="#">
                                           <i class="fa fa-arrow-right"></i> Member Info
                                         </a>
-                                        <a class="btn btn-danger btn-sm" title="Update Members" href="">
+                                        <a class="btn btn-danger btn-sm" title="Update Members" href="#">
                                           <i class="fa fa-trash"></i> Delete
                                         </a>
                                       </td>
                                   </tr>
+
+                                  @php
+                                    $count++;
+                                  @endphp
+
                                 @endforeach
                             </tbody>
+                            
                         </table>
                      </div>
                   </div>
@@ -104,7 +110,7 @@
     </div>
 
 <!-- script -->
-@include('Admin/files/scripts')
+@include('users/files/scripts')
 <!-- end -->
   </body>
 </html>

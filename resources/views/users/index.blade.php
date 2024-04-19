@@ -1,13 +1,13 @@
 <!DOCTYPE html>
     <html lang="en">
-    @include('Admin/files/head')
+    @include('users/files/head')
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
 
         <!-- header-nav top navigation -->
-          @include('Admin/files/sidebar')
+          @include('users/files/sidebar')
 
         <div class="top_nav">
             <div class="nav_menu">
@@ -39,6 +39,7 @@
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   DashBoard
+                          {{session()->get('designation')}}
                 </div>
               </div>
             </div>
@@ -58,7 +59,7 @@
     </div>
 
 <!-- script -->
-@include('Admin/files/scripts')
+@include('users/files/scripts')
 <!-- end -->
   </body>
 </html>
