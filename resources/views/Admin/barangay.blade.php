@@ -40,7 +40,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     @if(session()->has('brgy_name'))
-                      <h2 class="fw-bold">Barangay Name: {{session()->get('brgy_name')}}</h2>
+                      <h2 class="fw-bold">Barangay: {{session()->get('brgy_name')}}</h2>
                     @endif
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -59,7 +59,7 @@
                     
                     <div class="row align-item-center">
                       <div class="col-lg-3">
-                        <form method="post" action="/list-of-members">
+                        <form method="get" action="/list-of-members">
                         
                         @csrf
                           <input type="hidden" value="{{session()->get('brgy_name')}}" name="brgy_name">
@@ -168,25 +168,7 @@
     </div>
 
 <!-- script -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-   <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-                $('#example').DataTable();
-            });
-    </script>
+    @include('Admin/files/scripts')
 <!-- end -->
   </body>
 </html>

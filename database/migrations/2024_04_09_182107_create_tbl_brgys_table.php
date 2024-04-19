@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('tbl_brgys', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('date_applied')->now();
             $table->string('barangay_name');
         });
     }

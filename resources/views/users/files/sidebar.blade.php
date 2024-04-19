@@ -11,33 +11,37 @@
               <div class="menu_section">
                 <h3>Admin Dashboard</h3>
                 <ul class="nav side-menu">
-                  <li>
-                    <a href="/"><i class="fa fa-home"></i> DashBoard</a>
-                  </li>
-                  <li>
-                    <a href="/admim/announcement"><i class="fa fa-bullhorn"></i> Announcements</a>
-                  </li>
-                  <!-- <li><a><i class="fa fa-bars"></i> Application Forms <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bars"></i> Application Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/pwd">Person With Disabilities (PWD)</a></li>
-                      <li><a href="/solo-parent">Solo Parents</a></li>
-                      <li><a href="#">Senior Citizines</a></li>
-                      <li><a href="#">Womens</a></li>
+                    @switch(session()->get('designation'))
+                        @case("pwd")
+                        <li><a href="/pwd">Person With Disabilities (PWD)</a></li>
+                            @break
+                        @case("solo parent")
+                        <li><a href="/solo-parent">Solo Parents</a></li>
+                            @break
+                        @case("women")
+                        <li><a href="/women">Womens</a></li>
+                            @break
+                        @default
+                        <li><a href="/senior">Senior Citizines</a></li>
+                            @break
+                    @endswitch
+                      
+                      
                     </ul>
-                  </li> -->
+                  </li>
 
                   <li><a><i class="fa fa-bars"></i> List Of Barangay <span class="fa fa-chevron-down"></span></a>
-                    <form method="get" action="/barangay">
-                      <ul class="nav child_menu">
-                        @if(session()->has('sidebar'))
-                              @foreach(session()->get('sidebar') as $key)
-                                  <li>
-                                    <a href="/brgy/{{$key->barangay_name}}">{{$key->barangay_name}}</a>
-                                  </li>
-                              @endforeach
-                          @endif
-                      </ul>
-                    </form>
+                    <ul class="nav child_menu">
+                      @if(session()->has('sidebar'))
+                            @foreach(session()->get('sidebar') as $key)
+                                <li>
+                                  <a href="barangay/{{$key->barangay_name}}/{{session()->get('designation')}}/">{{$key->barangay_name}}</a>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
                   </li>
                   <!-- <li>
                     <a href="#"><i class="fa fa-bullhorn"></i> Reports</a>
@@ -60,7 +64,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="/logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
