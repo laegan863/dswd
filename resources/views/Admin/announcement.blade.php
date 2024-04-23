@@ -42,12 +42,33 @@
                     <h4 class="fw-bold">Announcement</h4>
                   </div>
                 <form>
-                  <div class="fw-bold fs-5">Enter Message Here:</div>
-                  <textarea class="form-control" name="message" rows="4">
-                  </textarea>
-                  <div class="text-end mt-4">
-                    <button class="btn btn-primary" type="submit">Send Message</button>
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="fw-bold fs-5">Enter Message Here:</div>
+                      <textarea class="form-control" name="message" rows="4">
+                      </textarea>
+                    </div>
+                    <div class="col-lg-4">
+
+                      <div class="mb-2 col-lg-12">
+                        <div class="fw-bold fs-5">
+                          Choose A Receiver
+                        </div>
+                        <select class="form-control" id="receiver" name="receiver">
+                          <option value="" selected="">Choose Here...</option>
+                          <option value="pwd">Person With Disability</option>
+                          <option value="senior">Senior Citizen</option>
+                          <option value="women">Womens</option>
+                          <option value="solo">Solo Parents</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-12">
+                        <button class="btn btn-primary col-12" id="submit" type="submit">Send Message</button>
+                      </div>
+                    </div>
                   </div>
+                  
+                  
                 </form>
                 </div>
               </div>
@@ -69,6 +90,15 @@
 
 <!-- script -->
 @include('Admin/files/scripts')
+
+<script type="text/javascript">
+  $("#submit").click(function(){
+    if ($("#receiver").val()=="") {
+      alert("Please Seleect A Receiver To Proceed");
+    }
+  });
+</script>
+
 <!-- end -->
   </body>
 </html>

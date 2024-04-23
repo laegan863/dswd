@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('date_applied')->nullable();
             $table->string('application')->nullable();
             $table->string('name')->nullable();
+            $table->string('barangay')->nullable();
             $table->string('b_day')->nullable();
             $table->string('b_place')->nullable();
             $table->string('age')->nullable();

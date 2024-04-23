@@ -12,20 +12,11 @@
                 <h3>Admin Dashboard</h3>
                 <ul class="nav side-menu">
                   <li>
-                    <a href="/"><i class="fa fa-home"></i> DashBoard</a>
+                    <a href="/admin"><i class="fa fa-home"></i> DashBoard</a>
                   </li>
                   <li>
                     <a href="/admim/announcement"><i class="fa fa-bullhorn"></i> Announcements</a>
                   </li>
-                  <!-- <li><a><i class="fa fa-bars"></i> Application Forms <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/pwd">Person With Disabilities (PWD)</a></li>
-                      <li><a href="/solo-parent">Solo Parents</a></li>
-                      <li><a href="#">Senior Citizines</a></li>
-                      <li><a href="#">Womens</a></li>
-                    </ul>
-                  </li> -->
-
                   <li><a><i class="fa fa-bars"></i> List Of Barangay <span class="fa fa-chevron-down"></span></a>
                     <form method="get" action="/barangay">
                       <ul class="nav child_menu">

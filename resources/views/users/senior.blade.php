@@ -36,9 +36,23 @@
           <div class="">
             <div class="clearfix"></div>
             <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                @if(session()->has('result'))
+                  @if(session()->get('result')==1)
+                    <div class="alert alert-success text-center fw-bold">
+                      Insert Success
+                    </div>
+                  @else
+                    <div class="alert alert-success text-center fw-bold">
+                      Insert Failed
+                    </div>
+                  @endif
+                @endif
+              </div>
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel py-5">
-                <form>
+                <form method="post" action="/add-senior-member">
+                  @csrf
                   <div class="text-center">
                     <h4 class="fw-bold">Application For Senior Citizen</h4>
                   </div>
@@ -92,11 +106,21 @@
                     </div>
                   </div>
                   <div class="row mt-3">
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                       <div class="my-3">
                         <div class="fw-bold fs-5">Address</div>
                         <input type="text" class="form-control" name="address">
                       </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <p class="mb-3 fw-bold">Barangay</p>
+                      <select class="form-control" name="barangay">
+                        @if(session()->has('sidebar'))
+                            @foreach(session()->get('sidebar') as $key)
+                                <option value="{{$key->barangay_name}}">{{$key->barangay_name}}</option>
+                            @endforeach
+                        @endif
+                      </select>
                     </div>
                     <div class="col-lg-6">
                       <div class="my-2">
@@ -388,7 +412,7 @@
                     <div class="col-lg-12">
                       <div class="my-2">
                         <div class="fw-bold fs-5">DATE OF MEMBERSHIP</div>
-                        <input type="date" class="form-control" name="association_address">
+                        <input type="date" class="form-control" name="date_of_membership">
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -437,7 +461,7 @@
         <footer >
           <div class="pull-right">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
+          </div >
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

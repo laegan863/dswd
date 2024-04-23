@@ -70,23 +70,24 @@ class AdminModel extends Model
 
         try {
 
-            // if ($lists == "pwd") {
-                
-            //     $sql = DB::table('pwds')->where('barangay',$list["brgy_name"])->where()->get();
-            //     DB::commit();
-            //     return $sql;
-
-            // }
-
             switch ($lists) {
                 case 'pwd':
                     $sql = DB::table('pwds')->where('barangay',$list["brgy_name"])->get();
-                    DB::commit();
-                    return $sql;
+
+                    $result = [
+                        "sql"=>$sql,
+                        "location"=>"pwd"
+                    ];
+                    return $result;
 
                     break;
                 case 'solo_parents':
-                    # code...
+                    $sql = DB::table('solo_parents')->where('barangay',$list["brgy_name"])->get();
+                    $result = [
+                        "sql"=> $sql,
+                        "location"=>"solo"
+                    ];
+                    return $result;
                     break;
 
                 case 'womens':

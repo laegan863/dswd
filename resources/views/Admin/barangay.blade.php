@@ -75,10 +75,10 @@
                         </form>
                       </div>
                       <div class="col-lg-3">
-                        <form method="post" action="/list-of-members">
+                        <form method="get" action="/list-of-members">
                           @csrf
                           <input type="hidden" value="{{session()->get('brgy_name')}}" name="brgy_name">
-                          <input type="hidden" value="solo_parents" name="list_of_members">
+                          <input type="hidden" value="solo_parent" name="list_of_members">
                           <div class="card py-5 px-4">
                             <div class="fw-bold text-center">
                               <i class="fa fa-person text-dark fa-2x"></i>
@@ -89,7 +89,7 @@
                         </form>
                       </div>
                       <div class="col-lg-3">
-                        <form method="post" action="/list-of-members">
+                        <form method="get" action="/list-of-members">
                           @csrf
                           <input type="hidden" value="{{session()->get('brgy_name')}}" name="brgy_name">
                           <input type="hidden" value="womens" name="list_of_members">
@@ -103,7 +103,7 @@
                         </form>
                       </div>
                       <div class="col-lg-3">
-                        <form method="post" action="/list-of-members">
+                        <form method="get" action="/list-of-members">
                           @csrf
                           <input type="hidden" value="{{session()->get('brgy_name')}}" name="brgy_name">
                           <input type="hidden" value="senior" name="list_of_members">

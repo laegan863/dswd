@@ -1,13 +1,13 @@
 <!DOCTYPE html>
     <html lang="en">
-    @include('users/files/head')
+    @include('Admin/files/head')
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
 
         <!-- header-nav top navigation -->
-          @include('users/files/sidebar')
+          @include('Admin/files/sidebar')
 
         <div class="top_nav">
             <div class="nav_menu">
@@ -39,7 +39,9 @@
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                      <h2 class="fw-bold">Barangay Name: {{$brgy_name}}</h2>
+                    @if(session()->has('brgy_name'))
+                      <h2 class="fw-bold">Barangay Name: {{session()->get('brgy_name')}}</h2>
+                    @endif
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -55,36 +57,29 @@
                           <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>DATE APPLIED</th>
-                                    <th>FULL NAME</th>
-                                    <th>BARANGAY</th>
+                                    <th>FIRST NAME</th>
+                                    <th>LAST QUANTITY</th>
+                                    <th>MIDDLE PRICE</th>
                                     <th class="text-center">ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                  $count = 1;
-                                @endphp
-                                @foreach($data_member as $key)
+                                
+                                @foreach($data as $key)
                                     <tr>
-                                      <td>{{$count}}</td>
+                                      <td>{{$key->id}}</td>
                                       <td>{{$key->date_applied}}</td>
                                       <td>{{$key->name}}</td>
                                       <td>{{$key->barangay}}</td>
                                       <td class="text-center">
-                                        <a class="btn btn-primary btn-sm" title="Member Info" href="#">
+                                        <a class="btn btn-primary btn-sm" title="Member Info" href="">
                                           <i class="fa fa-arrow-right"></i> Member Info
                                         </a>
-                                        <a class="btn btn-danger btn-sm" title="Update Members" href="#">
+                                        <a class="btn btn-danger btn-sm" title="Update Members" href="">
                                           <i class="fa fa-trash"></i> Delete
                                         </a>
                                       </td>
                                   </tr>
-
-                                  @php
-                                    $count++;
-                                  @endphp
-
                                 @endforeach
                             </tbody>
                         </table>
@@ -109,7 +104,7 @@
     </div>
 
 <!-- script -->
-@include('users/files/scripts')
+@include('Admin/files/scripts')
 <!-- end -->
   </body>
 </html>

@@ -56,8 +56,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>FIRST NAME</th>
-                                    <th>LAST QUANTITY</th>
-                                    <th>MIDDLE PRICE</th>
+                                    <th>LAST NAME</th>
+                                    <th>MIDDLE NAME</th>
                                     <th class="text-center">ACTION</th>
                                 </tr>
                             </thead>

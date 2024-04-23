@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Session;
 
-use Carbon;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -30,7 +30,12 @@ class AdminController extends Controller
 			$minutes = 525600;
 			config(['session.lifetime' => $minutes]);
 			config(['session.cookie_lifetime' => $minutes]);
-			return view('Admin/index');
+
+			$countpwd = DB::table('pwds')->count();
+			$countsolo = DB::table('solo_parents')->count();
+			$countsenior = DB::table('seniors')->count();
+
+			return view('Admin/index')->with(["pwd"=>$countpwd,"solo"=>$countsolo,"senior"=>$countsenior]);
 			
 		}else{
 			return view('login');
@@ -60,18 +65,35 @@ class AdminController extends Controller
 	
 		if(session()->get('user_id')==1){
 
-			$model = new AdminModel;
+			// $model = new AdminModel;
+			$brgy_name = $request->input('brgy_name');
 
-			$list = [
+			// $result = $model::member_list($list);
+			$list_mem = $request->input('list_of_members');
+			switch ($list_mem) {
+                case 'pwd':
+                    $sql = DB::table('pwds')->where('barangay',$brgy_name)->get();
+                    return view('Admin.pwd_member')->with('data',$sql);
+                    break;
+                case 'solo_parent':
+                // echo $brgy_name;
+                    $sql = DB::table('solo_parents')->where('barangay',$brgy_name)->get();
+                    return view('Admin.solo_parent_members')->with('data',$sql);
+                    break;
 
-				'brgy_name' => $request->input('brgy_name'),
-				'list_of_members' => $request->input('list_of_members')
+                case 'womens':
+                    # code...
+                    break;
 
-			];
-
-			$result = $model::member_list($list);
-			return view('Admin/pwd_member')->with('data',$result);
-
+                case 'senior':
+                    $sql = DB::table('seniors')->where('barangay',$brgy_name)->get();
+                    return view('Admin.senior_member')->with('data',$sql);
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
 			
 		}else{
 			return view('login');

@@ -36,23 +36,47 @@
           <div class="">
             <div class="clearfix"></div>
             <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                @if(session()->has('result'))
+                  @if(session()->get('result')==1)
+                    <div class="alert alert-success text-center fw-bold">
+                      Insert Success
+                    </div>
+                  @else
+                    <div class="alert alert-success text-center fw-bold">
+                      Insert Failed
+                    </div>
+                  @endif
+                @endif
+              </div>
               <div class="col-md-12 col-sm-12  ">
               <div class="x_panel py-5">
-                <form action="" method="post">
+                <form action="/add-solo-parent" method="post">
+                  @csrf
                   <div class="text-center">
                     <h4>Application For Solo Parent</h4>
                   </div>
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <p class="mb-3 fw-bold">Type Of Application</p>
                       <select class="form-control" name="application">
                         <option value="New Application">New Application</option>
                         <option value="Renewal Application">Renewal Application</option>
                       </select>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <p class="mb-3 fw-bold">Name</p>
                       <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="col-lg-4">
+                      <p class="mb-3 fw-bold">Barangay</p>
+                      <select class="form-control" name="barangay">
+                        @if(session()->has('sidebar'))
+                            @foreach(session()->get('sidebar') as $key)
+                                <option value="{{$key->barangay_name}}">{{$key->barangay_name}}</option>
+                            @endforeach
+                        @endif
+                      </select>
                     </div>
                   </div>
                   <div class="row mt-4">
@@ -125,7 +149,7 @@
                     </div>
                   </div>
                   <div class="row mt-5">
-                    <p class="fw-bold mb-3 text-center h5">Family Composition</p>
+                    <div class="fw-bold mb-3 text-start h5 col-12">Family Composition</div>
                     <div class="col-lg-2">
                       <p class="mb-3 fw-bold">Name</p>
                       <input type="text" class="form-control" name="family_name1">

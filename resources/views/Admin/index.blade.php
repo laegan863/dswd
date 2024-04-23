@@ -36,9 +36,28 @@
           <div class="">
             <div class="clearfix"></div>
             <div class="row">
-              <div class="col-md-12 col-sm-12  ">
-                <div class="x_panel">
-                  DashBoard 
+              <div class="col-md-12 col-sm-12">
+                <div class="row justify-content-start">
+                  <div class="col-lg-6">
+                    <div class="card d-flex justigy-content-center">
+                      <div class="card-header text-light bg-dark">
+                        <p class="fw-bold">DSWD Total Members:</p>
+                      </div>
+                      <div class="pb-5 pt-5 ">
+                        <canvas id="myChart" style="width:100%;max-width:100%"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card d-flex justigy-content-center">
+                      <div class="card-header text-light bg-dark">
+                        <p class="fw-bold">DSWD Total Members:</p>
+                      </div>
+                      <div class="pb-5 pt-5">
+                        <canvas id="myChart1" style="width:100%;max-width:100%"></canvas>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -58,6 +77,52 @@
     </div>
 
 <!-- script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+var xValues = ["PWD", "SOLO PARENTS", "SENIOR CITIZEN", "WOMENS"];
+var yValues = [{{$pwd}}, {{$solo}}, {{$senior}}, 24];
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9"
+];
+
+new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{  
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+});
+</script>
+
+<script>
+var xValues = ["PWD", "SOLO PARENTS", "SENIOR CITIZEN", "WOMENS"];
+var yValues = [{{$pwd}}, 49, 44, 24];
+var barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("myChart1", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: false,
+      text: "World Wine Production 2018"
+    }
+  }
+});
+</script>
 @include('Admin/files/scripts')
 <!-- end -->
   </body>

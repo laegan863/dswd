@@ -11,6 +11,9 @@
               <div class="menu_section">
                 <h3>Admin Dashboard</h3>
                 <ul class="nav side-menu">
+                  <li>
+                    <a href="/user"><i class="fa fa-home"></i> DashBoard</a>
+                  </li>
                   <li><a><i class="fa fa-bars"></i> Application Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     @switch(session()->get('designation'))

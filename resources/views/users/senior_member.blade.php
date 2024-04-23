@@ -55,9 +55,9 @@
                           <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>DATE APPLIED</th>
-                                    <th>FULL NAME</th>
-                                    <th>BARANGAY</th>
+                                    <th>FIRST NAME</th>
+                                    <th>LAST NAME</th>
+                                    <th>MIDDLE NAME</th>
                                     <th class="text-center">ACTION</th>
                                 </tr>
                             </thead>
@@ -68,9 +68,9 @@
                                 @foreach($data_member as $key)
                                     <tr>
                                       <td>{{$count}}</td>
-                                      <td>{{$key->date_applied}}</td>
-                                      <td>{{$key->name}}</td>
-                                      <td>{{$key->barangay}}</td>
+                                      <td>{{$key->firstname}}</td>
+                                      <td>{{$key->surname}}</td>
+                                      <td>{{$key->middlename}}</td>
                                       <td class="text-center">
                                         <a class="btn btn-primary btn-sm" title="Member Info" href="#">
                                           <i class="fa fa-arrow-right"></i> Member Info
@@ -87,6 +87,7 @@
 
                                 @endforeach
                             </tbody>
+                            
                         </table>
                      </div>
                   </div>

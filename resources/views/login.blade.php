@@ -11,21 +11,21 @@
 	  <div class="container py-5 h-100">
 	    <div class="row d-flex justify-content-center align-items-center h-100">
 	      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-	        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+	        <div class="card shadow-6-strong" style="border-radius: 1rem;">
 	          <div class="card-body p-5 text-center">
 
-	            <h3 class="mb-5">Sign in</h3>
+	            <h3 class="mb-5 fw-bold text-secondary" style="font-family:tahoma">DSWD Portal</h3>
 	            <form method="post" action="/login_auth">
 	            	@csrf
 		            <div data-mdb-input-init class="form-outline mb-4">
 		            	<div class="form-label text-start fw-semibold" for="typeEmailX-2">Username</div>
-		              <input type="text" name="username" id="typeEmailX-2" class="rounded-0 form-control form-control-lg" />
+		              <input placeholder="" type="text" name="username" id="typeEmailX-2" class="shadow rounded-0 form-control form-control-lg" />
 		              
 		            </div>
 
 		            <div data-mdb-input-init class="form-outline mb-4">
 		            <div class="form-label text-start fw-semibold" for="typePasswordX-2">Password</div>
-		              <input type="password" name="password" id="typePasswordX-2" class="rounded-0 form-control form-control-lg" />
+		              <input placeholder="" type="password" name="password" id="typePasswordX-2" class="shadow rounded-0 form-control form-control-lg" />
 		              
 		            </div>
 		            <button data-mdb-button-init data-mdb-ripple-init class="col-12 rounded-2 btn btn-primary btn-lg btn-block" type="submit">Login

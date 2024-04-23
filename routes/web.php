@@ -45,8 +45,7 @@ Route::get('/login', function(){
        	}
     }else{
         return view('login');
-    }
-    
+    } 
 });
 Route::get('admim/announcement',function(){
 	return view('Admin.announcement');
@@ -61,10 +60,13 @@ Route::get('/user', [UsersController::class, 'user_index']);
 Route::post('/submitted-pwd-application', [UsersController::class, 'pwd_application']);
 Route::get('/pwd', [usersController::class, 'add_pwd_member']);
 Route::get('/women', [usersController::class, 'add_women_member']);
-Route::get('/solo-parent', [usersController::class, 'add_solo_parent']);
-Route::get('/senior', [usersController::class, 'add_senior_member']);
 Route::get('/barangay/{barangay_name}/{designation}', [usersController::class, 'select_brgy']);
 Route::get('/selected_brgy/', [usersController::class, 'selected_brgy']);
 Route::get('/pwd_members', function(){
 	return view('users.pwd_member');
 });
+Route::get('/solo-parent', [UsersController::class, 'solo_parent']);
+Route::post('/add-solo-parent', [usersController::class, 'add_solo_parent']);
+
+Route::get('/senior', [usersController::class, 'senior']);
+Route::post('/add-senior-member', [usersController::class, 'add_senior']);

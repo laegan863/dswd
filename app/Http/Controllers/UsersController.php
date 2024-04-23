@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 
-use Carbon;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -33,10 +33,10 @@ class UsersController extends Controller
 				config(['session.lifetime' => $minutes]);
 				config(['session.cookie_lifetime' => $minutes]);
 
-				return view('users/index');
+				return view('users.index');
 				
 			}else{
-				return view('Admin.index');
+				return view('users.index');
 			}
 
 		}else{
@@ -172,13 +172,17 @@ class UsersController extends Controller
     			// return redirect('/pwd_members')->with(["data_member"=>$sql,"brgy_name"=>$barangay_name]);
     			break;
     		case 'solo parent':
-    			echo "solo";
+    			$sql = DB::table('solo_parents')->where('barangay',$barangay_name)->get();
+    			// // session()->put('brgy_name',$barangay_name);
+    			return view('users/solo_parent_member',["data_member"=>$sql,"brgy_name"=>$barangay_name]);
+
     			break;
     		case 'women':
     			echo "women";
     			break;
     		default:
-    			echo "senior";
+    			$sql = DB::table('seniors')->where('barangay',$barangay_name)->get();
+    			return view('users/senior_member',["data_member"=>$sql,"brgy_name"=>$barangay_name]);
     			break;
     	}
     	
@@ -187,11 +191,41 @@ class UsersController extends Controller
     protected function add_women_member(){
     	return view('users.women');
     }
-    protected function add_solo_parent(){
+    protected function senior(){
+    	return view('users.senior');
+    }
+
+    protected function solo_parent(){
     	return view('users.solo_parent');
     }
-    protected function add_senior_member(){
-    	return view('users.senior');
+
+    protected function add_solo_parent(Request $request){
+    	$data = $request->all();
+    	unset($data["_token"]);
+    	date_default_timezone_set('Asia/Manila');
+    	$data["date_applied"] = Carbon::now();
+    	$sql = DB::table('solo_parents')->insert($data);
+    	if ($sql) {
+    		return back()->with('result',1);
+    	}
+    }
+
+    protected function add_senior(Request $request){
+
+    	$data = $request->all();
+    	unset($data["_token"]);	
+    	echo "<br><br><br><br><br><br><br><br><br><br><br><br>";
+    	foreach ($data as $key => $value) {
+    		echo "$key: $value <br>";
+    	}
+    	
+    	date_default_timezone_set('Asia/Manila');
+    	$data["date_applied"] = Carbon::now();
+    	$sql = DB::table('seniors')->insert($data);
+    	if ($sql) {
+    		return back()->with('result',1);
+    	}
+
     }
 
 }
