@@ -36,12 +36,19 @@
           <div class="">
             <div class="clearfix"></div>
             <div class="row">
-              <div class="col-md-12 col-sm-12  ">
+              <div class="col-md-12 col-sm-12">
+
+              @if(session()->has('data'))
+                <div class="alert alert-success">
+                  {{session()->get('data')}}
+                </div>
+              @endif
                 <div class="x_panel py-5">
                   <div class="text-center">
                     <h4 class="fw-bold">Announcement</h4>
                   </div>
-                <form>
+                <form method="post" action="{{route('announcement')}}">
+                  @csrf
                   <div class="row">
                     <div class="col-lg-8">
                       <div class="fw-bold fs-5">Enter Message Here:</div>

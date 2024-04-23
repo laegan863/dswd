@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\redirection;
 use App\Http\Controllers\UsersController;
 use App\Http\Middleware\TokenValidation;
+use App\Http\Controllers\smsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,3 +71,6 @@ Route::post('/add-solo-parent', [usersController::class, 'add_solo_parent']);
 
 Route::get('/senior', [usersController::class, 'senior']);
 Route::post('/add-senior-member', [usersController::class, 'add_senior']);
+
+// smsController
+Route::post('send-annoucement',[smsController::class, 'send_sms'])->name('announcement');
